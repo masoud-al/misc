@@ -17,7 +17,7 @@ done
 
 LAST_MAC4=$(sed -rn "s/^.*([0-9A-F:]{5})$/\1/gi;s/://p" /sys/class/net/$NET_DEVICE/address)
 HOSTNAME=${HOST_PREFIX}-${LAST_MAC4:-0000}
-PROPER_HOSTNAME=$(grep -i $MAC /boot/mac-names.txt | cut -f2)
+PROPER_HOSTNAME=$(grep -i $MAC /boot/mac-names.txt | cut -d' ' -f2)
 
 if [[ ! -z "$PROPER_HOSTNAME" ]]; then
         HOSTNAME=$PROPER_HOSTNAME
